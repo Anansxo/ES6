@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('ok')
+                // reject('err')
+            }, 1000)
+        })
+
+        p.then(value => {
+            console.log(111);
+            // 例如只需要输出此段，后面的不执行
+            // 返回一个 pending状态的promise，由于返回的状态未决定，后面的then回调函数也就无法执行
+            return new Promsie(()=>{})
+        }).then(value => {
+            console.log(222)
+        }).then(value => {
+            console.log(333);
+        }).catch(error => {
+            console.warn(error);
+        })
+    </script>
+</body>
+
+</html>

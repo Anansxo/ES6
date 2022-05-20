@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 检测数组中的元素是否满足指定条件， 返回布尔值
+        // ！！如果找到了满足条件的元素，就终止循环不在查找，饭=返回布尔值
+        let arr = [11, 22, 33, 'red', 'green']
+        let arrtf = arr.some((v) => {
+           return v === 'red'
+        })
+        console.log(arrtf);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1 利用 new Object() 创建对象
+
+        const obj1 = new Object();
+
+        // 2 利用 对象字面量
+
+        const obj2 = {
+
+        }
+
+        // 3 利用构造函数
+
+        function Star(uname, age) {
+            this.uname = uname;
+            this.age = age;
+            // 动态添加的方法
+            this.sing = function () {
+                console.log('唱歌');
+            }
+        }
+
+        const ldh = new Star('刘德华', 18);
+        const zxy = new Star('张学友', 20);
+        console.log(ldh);
+        // 调用公共方法
+        ldh.sing();
+        zxy.sing();
+
+        // new在执行时会做的四件事情
+            /* 1 在内存中创建新的空对象
+            2 让 this 指向这个新对象
+            3 执行构造函数里的代码，给这个新对象添加属性和方法
+            4 返回这个新对象（所以构造函数不需要return） */
+    </script>
+</body>
+
+</html>

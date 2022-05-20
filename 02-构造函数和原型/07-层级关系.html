@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        层级关系,成员对象查找规则
+            在通过对象访问属性时,会按照这个属性的名称开始搜索.
+            搜索开始于对象实例本身,如果发现给定的名称就返回对应的值, 如果没有本身上没找到这个属性,则会沿着指针进入原型对象,直到找到对应值,如果没找到返回undefined
+
+            如果实例对象本身和原型上存在相同的属性, 会遮住原型对象上的属性,取自身属性值返回, 可以delete 实例.xx删除一个属性
+
+            obj实例.hasOwnProperty('xx') 查找某个属性实在实例上还是在原型对象上, 返回布尔值
+        */
+    </script>
+</body>
+
+</html>

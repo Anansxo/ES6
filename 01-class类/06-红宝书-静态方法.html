@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Person {
+            constructor() {
+                // 添加 this的所有内容都会存在于不同的实例上
+                this.locate = () => console.log('instance', this);
+            }
+
+            // 定义在类的原型对象上
+            locate() {
+                console.log('prototype', this);
+            }
+
+            // 定义在类本身上
+            static locate() {
+                console.log('class', this);
+            }
+        }
+
+        let p = new Person;
+        p.locate(); //instance Person {locate: ƒ}
+        Person.prototype.locate() // prototype {constructor: ƒ, locate: ƒ}
+        Person.locate() //
+        /*
+        class
+         class Person {
+            constructor() {
+                // 添加this的所有内容都会存在于不同的实例上
+                this.locate = () => console.log('instance', this);
+            }
+
+            // 定义在类的原型对象上
+            …
+        */
+    </script>
+</body>
+
+</html>

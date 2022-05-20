@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<div class="container">
+		<h2 class="page-header">promise初体验</好>
+			<button class="btn btn-primary" id="btn">点击抽奖</button>
+	</div>
+	<script>
+		// 封装随机数函数
+		function rand(n, m) {
+			return Math.ceil(Math.random() * (n - m + 1)) + m - 1;
+		}
+
+		/* 点击按钮
+				2s 后显示是否中奖（30%概率）
+				yes 恭喜中奖
+				no 再接再厉
+		*/
+		const btn = document.querySelector("#btn");
+		btn.addEventListener('click', () => {
+			//     // 30%   100 1-30为中奖
+			//     // 获取1到100的随机数
+			// let number = parseInt(Math.random() * 100);
+			// setTimeout(() => {
+			// 	if (number <= 30) {
+			// 		console.log(number, '恭喜中奖')
+			// 	} else {
+			// 		console.log(number, '再来！你可以的')
+			// 	}
+			// }, 500)
+
+
+			// Promise 形式实现
+			const p = new Promise((resolve, reject) => {
+				setTimeout(() => {
+					let n = rand(1, 100)
+					if (n <= 30) {
+						resolve(n) //将promise的状态设置为 成功
+					} else {
+						reject(n) //将promise状态设置为 失败
+					}
+				}, 500)
+			})
+			console.log(p);
+			// 调用then方法
+			// 成功执行第一个回调函数，失败执行第二个回调函数
+			p.then((value) => { // 接受成功的值
+				console.log(value, 'yes');
+			}, (error) => { //接受失败的值
+				console.log(error, 'no');
+			})
+
+		})
+
+
+
+	</script>
+</body>
+
+</html>

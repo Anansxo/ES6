@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // // 1 父类
+        // class Father {
+        //     constructor() {
+
+        //     }
+        //     money() {
+        //         console.log(100);
+        //     }
+        // }
+
+        // // 2 子类继承父类
+        // class Son extends Father {
+
+        // }
+
+        // // 调用父类
+        // new Father()
+
+        // // 调用子类
+        // let son = new Son()
+        // son.money() // 子获取父的方法
+
+        class Father {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            sum() {
+                console.log(this.x + this.y);
+            }
+        }
+
+        class Son extends Father {
+            constructor(s,w) {
+                super(s,w) //调用父类中的构造函数
+            }
+        }
+
+        let son = new Son(1, 2) //将值传递给子类的构造函数，通过super关键字又将值传递给父类构造函数
+        son.sum()
+    </script>
+</body>
+
+</html>

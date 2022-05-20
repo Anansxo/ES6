@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Father(uname, age) {
+            this.uname = uname,
+                this.age = age
+            console.log(this);
+        }
+
+        function Son(uname, age, score) {
+            Father.call(this, uname, age, score) // 利用call方法将父构造函数指向子构造函数
+            this.score = score;
+        }
+
+        const son = new Son('张三', 18, 100)
+        console.log(son);
+    </script>
+</body>
+
+</html>

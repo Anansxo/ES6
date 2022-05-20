@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* 
+        构造函数可以是函数表达式, 也可以是函数声明
+            function Person(){} // 函数申明
+            let Person = function(){} 表达式
+        */
+        function Person() { //原型对象
+
+        }
+        // 申明之后，构造函数就有一个与之关联的原型对象
+        console.log(Person.prototype);
+
+        // 构造函数里有一个prototype属性引用其原型对象
+        // 而这个原型对象里面也有一个constructor引用这个构造函数
+        // 两者循环引用
+        console.log(Person.prototype.constructor === Person); // true
+
+        // 正常的原型链都会终止与Objcect原型对象,
+        // Object原型的原型是null
+        console.log(Person.prototype.__proto__ === Object.prototype); //true
+        console.log(Person.prototype.__proto__.constructor === Object); //true
+        console.log(Person.prototype.__proto__.__proto__ === null); //true
+        console.log(Person.prototype.__proto__.__proto__); // null
+
+        let person1 = new Person(), // 实例,指向原型对象
+            person2 = new Person();
+
+        // 构造函数, 原型, 原型链是三个不同的对象
+        console.log(person1 !== Person); //true
+        console.log(person1 !== Person.prototype); //true
+        console.log(person1.prototype !== Person); //true
+
+    /* 关系:
+        实例通过__proto__链接到原型对象, 它实际上指向隐藏特性[[Prototype]]
+        构造函数通过prototype属性链接到原型对象
+        实例与原型对象有直接联系, 实例与构造函数没有 */
+        console.log(person1.__proto__ === Person.prototype); // true
+        console.log(person1.__proto__.constructor === Person); //true
+
+        // 同一构造函数创建两个实例,共享一个原型对象
+        console.log(person1.__proto__ === person2.__proto__); //true
+
+        //实例里面没有属性和方法,只包含一个内部特性[[Prototype]] 但是[[Prototype]]中存在__proto__属性指向的是原型对象,所以在去它指向的原型对象身上找, 这就是对象属性查找机制
+        console.log(person1); 
+        console.log(person2); 
+        const proto = Object.getPrototypeOf(person1); // getPrototypeOf()返回参数的内部特性[[Prototype]]的值
+        console.log(proto);
+
+        // getPrototypeOf() setProtypeOf()和 Object.create()
+
+            // getPrototypeOf() 返回内部特性,可以方便的获取一个对象的原型
+
+            //  setProtypeOf() 严重影响性能!!!, 可以像实例的私有特性写入一个新值,这样就可以重写一个对象的原型继承关系
+                // let a = {
+                //     num: 2
+                // }
+                // let b = {
+                //     name: '张三'
+                // }
+                // !!!!!!!!!!!!!!严重影响性能!!!!!!!!!!!!!!!
+                // Object.setPrototypeOf(b, a);
+                // console.log(b.name); // 张三
+                // console.log(b.num); // 2
+                // console.log(Object.getPrototypeOf(b) === a); // true
+
+                let a = {
+                    num: 2
+                }
+                // 避免setPeototype造成的性能下降,可通过create()创建一个新对象,同时为其指定原型
+                let b = Object.create(a);
+                b.name = "张三";
+
+                console.log(b.name); 
+                console.log(b.num);
+                console.log(Object.getPrototypeOf(b) === a)
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <span>请输入验证码: <input type="text"></span>
+    <button id="btnClick">获取</button>
+
+    <script>
+        let btn = document.getElementById('btnClick')
+        btn.onclick = function () {
+            this.disabled = true //禁用按钮
+            // let that = this;
+            setInterval(function(){ // 定时器指向的是window
+                this.disabled = false
+            }.bind(this), 2000) //改变this指向的btn
+        }
+    </script>
+</body>
+
+</html>

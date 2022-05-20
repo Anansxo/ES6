@@ -1,0 +1,51 @@
+/<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // -------------------------------------------------------
+        // 创建构造函数 SuperType
+        function SuperType(age) {
+            this.property = true
+            this.age = age
+        }
+        // 往 SuperType原型对象上添加 getSperValue方法 返回值是 SuperType 构造函数中的值
+        SuperType.prototype.getSuperValue = function (age) {
+            return this.property;
+        }
+
+        // ---------------------------------------------------------
+        // 创建构造函数 SubType
+        function SubType(age) {
+            this.subproperty = false
+        }
+        // 往 SubType原型对象上添加 getSubValue方法 返回值是 SubType 构造函数中的值
+        SubType.prototype.getSubValue = function () {
+            return this.subproperty;
+        }
+
+        // ---------------------------------------------------------
+        // 继承
+        // 将 SuperType实例赋值给 SubType的原型对象，实现 Subtype继承 SuperTyep的属性和方法, 重写了 Subtype最初始的原型
+        SubType.prototype = new SuperType();
+
+        // -----------------------------------------------------------
+        // 调用打印
+        let instance = new SuperType(20)
+        console.log(instance);
+        console.log(instance.property, instance.age); //true 20
+
+        // -------------------------------------------------------
+        // let  a = new SubType() 重新指回
+        // console.log(a);
+    </script>
+</body>
+
+</html>

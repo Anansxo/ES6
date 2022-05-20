@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function main(){
+        // 1. 如果函数的返回值是一个非promise类型的数据, 那么返回值就是这个非promise数据(默认时undefined)
+            // return 521
+        // 2. 如果返回结果是promsie对象,返回的结果就是promise中成功或者失败的结果
+            return new Promise((resolve, reject)=>{
+                resolve('ok')
+                // reject('err')
+        // 3. 抛出异常, 返回的结果就是这个异常值
+            // throw 'No'
+            })
+        }
+        let result = main()
+        console.log(result);
+    </script>
+</body>
+</html>

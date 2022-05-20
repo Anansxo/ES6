@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 先改变状态还是先调用执行.then方法
+
+        // 当执行器函数中任务都是同步任务直接调用resolve()时，此时先改变promsie对象的状态，再执行.then方法的回调函数
+        // 当执行器函数中任务为异步任务的时候，then方法中的回调函数先执行，之后再改变promise对象状态
+
+        // 获取数据
+        // 先指定回调函数，后改变状态时，等promise状态改变后再去调用then方法中成功失败的回调函数结果
+        let p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('ok')
+            }, 1000)
+        })
+        p.then(value => {
+            console.log(value);
+        }, error => {
+            console.log(error);
+        })
+    </script>
+</body>
+
+</html>

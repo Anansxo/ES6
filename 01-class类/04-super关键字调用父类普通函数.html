@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Fater {
+            say(){
+                return '父亲'
+            }
+        }
+
+        class Son extends Fater{
+            say(){
+                // console.log('儿子');
+                console.log(super.say()); //子类调用父类的普通函数  super.xxx()
+            }
+        }
+
+        let son = new Son();
+        son.say()
+    </script>
+</body>
+</html>

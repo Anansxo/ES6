@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let obj = {
+            id: 1,
+            name:'小米',
+            price: 2999
+        }
+
+        // Object.defineProperty() 定义新属性或修改原有的属性
+        // 添加对象新属性
+        Object.defineProperty(obj, 'num', {
+            value: 1000
+        })
+        console.log(obj);
+
+        // 修改属性
+        Object.defineProperty(obj, 'price', {
+            value: 999
+        })
+        console.log(obj);
+
+         // 禁止修改id属性
+        Object.defineProperty(obj, 'id', {
+            writableL: false
+        })
+        obj.id = 2; // x
+        console.log(obj);
+
+
+        Object.defineProperty(obj, 'address', {
+            value: '中国', //设置属性的值
+            writable: false, // 值是否可以重写
+            enumerable: false,//禁止枚举
+            configurable: false  //禁止删除属性或再次修改特性
+        })
+        delete obj.address
+        console.log(obj);
+        console.log(Object.keys(obj))
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // filter() 筛选数组 
+        // 创建一个新数组，新数组中通过检查指定数组中符合条件的元素，主要用来筛选数组
+        // 注意返回的是一个新数组，我们要定义接收
+        let arr = [10, 20, 33, 18, 14, 32];
+        let newArr = arr.filter(v => {
+            return v >= 20 // 筛选出原数组中>=20的数，然后返回到新数组中
+        })
+        console.log(newArr);
+    </script>
+</body>
+
+</html>

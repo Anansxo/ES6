@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ------------------------------------------
+
+        // 1 call()
+        let obj = {
+            uname: 'zs'
+        }
+
+        function fn1() {
+            console.log(this);
+        }
+        // fn1() 指向window
+        fn1.call(obj) //指向的是obj对象
+
+        // --------------------------------------------
+
+        //  2 apply()
+        function fn2(name, age, sex, max, min) {
+            console.log(this);
+            console.log(name, age, sex, max, min);
+        }
+        // 调用函数， 改变this的指向
+        // 参数必须是数组
+        // apply主要应用 比如可以利用apply 借助数学内置对象求最大值
+        // Math.max()
+        let arr = [1, 2, 3, 4, 5]
+        let max = Math.max.apply(Math, arr)
+        let min = Math.min.apply(Math, arr)
+        fn2.apply(obj, [obj.uname, 20, '男', max, min])
+
+        // ---------------------------------------------------
+
+        // 3 bind 
+        // 不会调用原来的函数  可以改变原来函数的this指向 
+        // 返回的是原函数改变this之后产生的新函数
+        function fn3(a,b){
+            console.log(this);
+            console.log(a+b);
+        }
+        let newfn3 = fn3.bind(obj, 1, 2)
+        newfn3()
+    </script>
+</body>
+
+</html>

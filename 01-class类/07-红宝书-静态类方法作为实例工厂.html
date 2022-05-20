@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(age){
+                this.age = age;
+            }
+            
+            sayAge(){
+                console.log(this.age);
+            }
+
+            static create(){
+                // 使用随机年龄创建并返回一个Preson实例
+                return new Person(Math.floor(Math.random() * 100));
+            }
+        }
+        console.log(Person.create());
+    </script>
+</body>
+</html>

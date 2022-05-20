@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 匿名函数，函数表达式
+        let fn1 = function(){}
+
+        // 匿名函数
+        function fn2(){}
+
+        // 利用 new Function('参数1', '参数2', '函数体')
+        let fn3 = new Function('a', 'b', 'console.log(a + b )');
+        fn3(1, 2)
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Fater {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+            sum() {
+                console.log(this.x + this.y);
+            }
+        }
+
+        // 子类继承父类加法同时， 扩展减法方法
+        class Son extends Fater {
+            constructor(x, y) {
+                // 利用super， 调用父类的父类构造函数
+                // 必须在子类this之前调用
+                super(x, y);
+                this.x = x;
+                this.y = y;
+            }
+            subtract(){
+                console.log(this.x - this.y);
+            }
+        }
+
+        let son = new Son(10, 5)
+        son.subtract() //调用子类的减法操作
+        son.sum() // 调用继承到父类的加法操作
+    </script>
+</body>
+
+</html>

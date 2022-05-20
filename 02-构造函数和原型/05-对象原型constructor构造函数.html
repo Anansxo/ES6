@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Star(uname, age) {
+            this.uname = uname;
+            this.age = age;
+        }
+       /*  Star.prototype.sing = function () {
+            console.log('唱歌');
+        } */
+        
+        // 如果我们修改了原来的原型对象，给原型对象赋值的是一个对象，则必须手动的利用constructor
+        // 对象方式会改变constructor的指向, 需要手动利用constructor这个属性指回原来的构造函数
+        Star.prototype = {
+            constructor:Star,
+            sing(){
+                console.log('唱歌');
+            },
+            movie(){
+                console.log('演戏');
+            }
+        }
+        const ldh = new Star;
+        ldh.sing(); ldh.movie();
+
+        console.log(Star.prototype);
+        console.log(Star.prototype.__proto__);
+    </script>
+</body>
+
+</html>
